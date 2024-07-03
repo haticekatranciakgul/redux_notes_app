@@ -2,9 +2,12 @@ import React from "react";
 import './NoteItem.style.scss'
 
 
-const NoteItem =({title, content}) =>{
+const NoteItem =({title, content, onItemClicked}) =>{
     return (
-        <div className="NoteItem_container">
+        <div className="NoteItem_container"
+        role="button"
+        onClick={onItemClicked}
+        >
             <h2>{title}</h2>
             <p>{content}</p>
 
