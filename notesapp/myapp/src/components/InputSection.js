@@ -6,6 +6,7 @@ import './InputSection.style.scss';
 
 
 const InputSection = () => {
+  const id = useSelector(state => state.inputs.id);
   const title = useSelector(state => state.inputs.title);
   const content = useSelector(state => state.inputs.content);
   const dispatch = useDispatch();
@@ -20,11 +21,6 @@ const InputSection = () => {
     dispatch(inputActions.resetInputs())
    }
   }
-
-  
-
-
-
 
     return (
       <div className='InputSection_container'>
@@ -48,7 +44,17 @@ const InputSection = () => {
         </textarea>
         <button
         onClick={addNote}
-        > ADD NOTE </button>
+        > 
+        { id === -1 ? "ADD NOTE" : "UPDATE NOTE"}
+        </button>
+
+        <button
+        
+        >
+          DELETE NOTE
+        </button>
+
+
       </div>
     );
   
