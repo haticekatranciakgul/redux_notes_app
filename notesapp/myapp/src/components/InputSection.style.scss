@@ -1,0 +1,23 @@
+.InputSection_container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    input, textarea {
+        min-width: 400px;
+        border: solid 1px gray;
+        border-radius: 0.3rem;
+        padding: 0.5rem;
+        font-size: 10pt;
+        margin: 0.5em;
+    }
+}
+button {
+  background-color: black;
+  border: none;
+  color: white;
+  font-size: 10pt;
+  border-radius: 0.3em;
+  padding: 0.5em;
+
+}
