@@ -13,51 +13,77 @@ const InputSection = () => {
 
 
   const addNote = () => {
-   if(title && content) {
-    dispatch(noteActions.addNote({
-      title,
-      content
-    }))
-    dispatch(inputActions.resetInputs())
-   }
+    if (title && content) {
+      dispatch(noteActions.addNote({
+        title,
+        content
+      }))
+      dispatch(inputActions.resetInputs())
+    }
   }
 
-    return (
-      <div className='InputSection_container'>
-        <input 
-        type='text' 
+
+  const updateNote = () => {
+    if(title && content ) {
+      dispatch(noteActions.updateNote(id, {
+        title, content
+      }))
+      dispatch(inputActions.resetInputs())
+
+    }
+  
+  }
+
+  const deleteNote = () => {
+    dispatch(noteActions.deleteNote(id))
+    dispatch(inputActions.resetInputs())
+
+
+  }
+
+
+  return (
+    <div className='InputSection_container'>
+      <input
+        type='text'
         placeholder='Note title'
         value={title}
-        onChange={ e => 
+        onChange={e =>
           dispatch(inputActions.setInputTitle(e.target.value))
         }
-        >
+      >
 
-        </input>
-        <textarea
-          placeholder='Note Content'
-          value={content}
-          onChange={ e => 
-            dispatch(inputActions.setInputContent(e.target.value))
-          }
-        >
-        </textarea>
+      </input>
+      <textarea
+        placeholder='Note Content'
+        value={content}
+        onChange={e =>
+          dispatch(inputActions.setInputContent(e.target.value))
+        }
+      >
+      </textarea>
+
+      <div className='inputSection_container_btnWrapper'>
         <button
-        onClick={addNote}
-        > 
-        { id === -1 ? "ADD NOTE" : "UPDATE NOTE"}
+          onClick={ id === -1 ? addNote : updateNote}
+        >
+          {id === -1 ? "ADD NOTE" : "UPDATE NOTE"}
         </button>
 
-        <button
-        
-        >
-          DELETE NOTE
-        </button>
-
-
+        {id !== -1 &&
+          <button
+            onClick={deleteNote}
+            style={{ marginLeft: '1em', backgroundColor: 'red' }}
+          >
+            DELETE NOTE
+          </button>
+        }
       </div>
-    );
-  
+
+    </div>
+  );
+
 };
+
 
 export default InputSection

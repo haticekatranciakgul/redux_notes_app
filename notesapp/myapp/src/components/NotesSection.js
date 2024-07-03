@@ -28,15 +28,20 @@ const NoteSection = () => {
 
     return (
         <div className='NoteSection_container'>
-           {notes.map((item,index) => (
-             <NoteItem key={index}
-             title={item.title}
-             content={item.content}
-             onItemClicked={()=> {
-                onItemClicked(item, index);
-             }}
-             ></NoteItem>
-           ))}
+           {notes.map((item,index) => {
+            if(item) {
+                return(
+                    <NoteItem key={index}
+                    title={item.title}
+                    content={item.content}
+                    onItemClicked={()=> {
+                       onItemClicked(item, index);
+                    }}
+                    ></NoteItem>
+                )
+            }
+            
+        })}
              
         </div>
 

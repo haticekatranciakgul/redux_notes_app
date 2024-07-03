@@ -23,10 +23,15 @@ export default (state = initialState, action) => {
                 notes,
             }
         }
-        case actionTypes.REMOVE_NOTE: {
+        case actionTypes.DELETE_NOTE: {
             const { index } = action;
-            const notes = [...state.notes];
-            delete notes[index] 
+            const notes = [];
+            state.notes.forEach((note, i) => {
+                if(index !== i ) {
+                    notes.push(note)
+                }
+            })
+
             return {
                 notes,
             }
